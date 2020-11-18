@@ -1,14 +1,16 @@
 package edu.epam.day3.carshop.service;
 
+import edu.epam.day3.carshop.entity.Brand;
 import edu.epam.day3.carshop.entity.Car;
-import edu.epam.day3.carshop.entity.Shop;
+import edu.epam.day3.carshop.entity.CarShop;
+import edu.epam.day3.carshop.entity.Model;
 
 import java.util.ArrayList;
 
 
 public class ShopService {
 
-    public ArrayList<Car> findBrand(Shop cars, String brand) {
+    public ArrayList<Car> findByBrand(CarShop cars, Brand brand) {
         ArrayList<Car> currentCars= new ArrayList<>();
         for (int i = 0; i < cars.size(); i++) {
             if (brand.equals(cars.getCar(i).getBrand())){
@@ -18,7 +20,7 @@ public class ShopService {
         return currentCars;
     }
 
-    public ArrayList<Car> findModelWithAge(Shop cars, String model, int age){
+    public ArrayList<Car> findByModelAndAge(CarShop cars, Model model, int age){
         ArrayList<Car> currentCars = new ArrayList<>();
 
         for (int i = 0; i < cars.size(); i++) {
@@ -29,7 +31,7 @@ public class ShopService {
         return currentCars;
     }
 
-    public ArrayList<Car> findAgeWithPrice(Shop cars, int price, int age){
+    public ArrayList<Car> findByAgeAndPrice(CarShop cars, int price, int age){
         ArrayList<Car> currentCars = new ArrayList<>();
 
         for (int i = 0; i < cars.size(); i++) {
