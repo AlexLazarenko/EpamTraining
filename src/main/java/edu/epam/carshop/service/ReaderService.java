@@ -15,7 +15,7 @@ public class ReaderService {
     private final int price = 0;
     private final String regNumber = "";
 
-    public CarShop readCar(CarShop cars, String dir) throws IOException {
+    public CarShop readCar(CarShop cars, String dir) {
         try (Reader in = new FileReader(PropertiesLoader.getProperty(dir))) {
             Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader().parse(in);
             for (CSVRecord record : records) {

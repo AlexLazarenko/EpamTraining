@@ -3,8 +3,6 @@ package edu.epam.carshop.service;
 import edu.epam.carshop.entity.*;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 import static org.testng.Assert.*;
 
 public class ReaderServiceTest {
@@ -12,7 +10,7 @@ public class ReaderServiceTest {
     private CarShop cars = new CarShop();
 
     @Test
-    public void testReadCar() throws IOException {
+    public void testReadCar() {
         ReaderService readerService=new ReaderService();
         CarShop actual=readerService.readCar(cars,"testFile.dir");
         CarShop expected=new CarShop();

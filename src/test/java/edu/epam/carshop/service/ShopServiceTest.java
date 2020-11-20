@@ -4,7 +4,6 @@ import edu.epam.carshop.entity.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class ShopServiceTest {
     private CarShop cars = new CarShop();
 
     @BeforeClass
-    public void setUp() throws IOException {
+    public void setUp() {
         ReaderService readerService = new ReaderService();
         readerService.readCar(cars,"testFile.dir");
     }
