@@ -20,8 +20,7 @@ public class CarShop {
     }
 
     public List<Car> getCars() {
-        return cars;
-    }
+        return new ArrayList<>(cars); }
 
     @Override
     public boolean equals(Object o) {

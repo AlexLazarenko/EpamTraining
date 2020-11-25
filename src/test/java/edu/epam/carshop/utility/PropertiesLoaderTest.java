@@ -1,4 +1,4 @@
-package edu.epam.carshop.utils;
+package edu.epam.carshop.utility;
 
 import org.testng.annotations.Test;
 
