@@ -12,6 +12,16 @@ public class Car {
     private int price;
     private String registrationNumber;
 
+    public Car(int id, Color color, Brand brand, int year, Model model, int price, String registrationNumber) {
+        this.id = id;
+        this.color = color;
+        this.brand = brand;
+        this.year = year;
+        this.model = model;
+        this.price = price;
+        this.registrationNumber = registrationNumber;
+    }
+
     public int getId() {
         return id;
     }

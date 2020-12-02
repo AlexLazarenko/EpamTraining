@@ -1,4 +1,4 @@
-package edu.epam.carshop.service;
+package edu.epam.carshop.reader;
 
 import edu.epam.carshop.entity.*;
 import edu.epam.carshop.utility.PropertiesLoader;
@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-public class ReaderService {
+public class DataReader {
     private int id = 0;
     private int year = 0;
     private int price = 0;

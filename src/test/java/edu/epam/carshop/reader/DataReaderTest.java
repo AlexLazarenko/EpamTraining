@@ -1,18 +1,19 @@
-package edu.epam.carshop.service;
+package edu.epam.carshop.reader;
 
 import edu.epam.carshop.entity.*;
+import edu.epam.carshop.reader.DataReader;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class ReaderServiceTest {
+public class DataReaderTest {
 
     private CarShop cars = new CarShop();
 
     @Test
     public void testReadCar() {
-        ReaderService readerService=new ReaderService();
-        CarShop actual=readerService.readCar(cars,"testFile.dir");
+        DataReader dataReader =new DataReader();
+        CarShop actual= dataReader.readCar(cars,"testFile.dir");
         CarShop expected=new CarShop();
         Car car1=new Car(1, Color.VIOLET, Brand.VOLKSWAGEN,2000, Model.SEDAN,2000,"numb1");
         Car car2=new Car(2, Color.GREEN, Brand.OPEL,2001, Model.HATCHBACK,2000,"numb2");
