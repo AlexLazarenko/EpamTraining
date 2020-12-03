@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CarShop {
 
-    private final ArrayList<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
     public Car getCar(int index) {
         return cars.get(index);
@@ -15,12 +15,17 @@ public class CarShop {
         cars.add(car);
     }
 
-    public int size(){
+    public int size() {
         return cars.size();
     }
 
     public List<Car> getCars() {
-        return new ArrayList<Car>(cars); }
+        return new ArrayList<Car>(cars);
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -27,6 +27,8 @@ public class ShopDaoImpl implements ShopDao {
             }
         }
         cars.add(car);
+        shop.setCars(cars);
+        CarShopStorage.getInstance().setCars(shop);
     }
 
     @Override
@@ -66,6 +68,8 @@ public class ShopDaoImpl implements ShopDao {
                 break;
             }
         }
+        shop.setCars(cars);
+        CarShopStorage.getInstance().setCars(shop);
     }
 
     @Override
