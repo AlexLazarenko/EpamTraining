@@ -4,12 +4,13 @@ import edu.epam.carshop.entity.Brand;
 import edu.epam.carshop.entity.Car;
 import edu.epam.carshop.entity.CarShop;
 import edu.epam.carshop.entity.Model;
+import edu.epam.carshop.exception.DaoException;
 
 import java.lang.reflect.Parameter;
 import java.util.List;
 
 public interface ShopDao {
-    void createCar(Car car);
+    void createCar(Car car) throws DaoException;
 
     Car readCarById(int id);
 

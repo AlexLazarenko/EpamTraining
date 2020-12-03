@@ -4,6 +4,7 @@ import edu.epam.carshop.entity.Brand;
 import edu.epam.carshop.entity.Car;
 import edu.epam.carshop.entity.CarShop;
 import edu.epam.carshop.entity.Model;
+import edu.epam.carshop.exception.DaoException;
 import edu.epam.carshop.reader.DataReader;
 import edu.epam.carshop.service.ShopService;
 import edu.epam.carshop.storage.CarShopStorage;
@@ -16,14 +17,14 @@ public class ShopDaoImpl implements ShopDao {
     private final ShopService service = new ShopService();
 
     @Override
-    public void createCar(Car car) {
+    public void createCar(Car car) throws DaoException {
         List<Car> cars = shop.getCars();
         if (cars.contains(car)) {
-            throw new IllegalArgumentException("This car is already in store: " + car);
+            throw new DaoException("This car is already in store: " + car);
         }
         for (Car carInArray : cars) {
             if (car.getId() == carInArray.getId()) {
-                throw new IllegalArgumentException("Car with this id is already in store: " + car.getId());
+                throw new DaoException("Car with this id is already in store: " + car.getId());
             }
         }
         cars.add(car);
