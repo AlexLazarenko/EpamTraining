@@ -23,8 +23,8 @@ public class CarShop {
         return new ArrayList<Car>(cars);
     }
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
+    public void setCar(int index, Car car) {
+        cars.set(index, car);
     }
 
     @Override

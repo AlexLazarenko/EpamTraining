@@ -5,16 +5,20 @@ import edu.epam.carshop.entity.Car;
 import edu.epam.carshop.entity.CarShop;
 import edu.epam.carshop.entity.Model;
 import edu.epam.carshop.exception.DaoException;
-import edu.epam.carshop.reader.DataReader;
 import edu.epam.carshop.service.ShopService;
+import edu.epam.carshop.service.ShopSortService;
 import edu.epam.carshop.storage.CarShopStorage;
-import edu.epam.carshop.utility.PropertiesLoader;
+
 
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ShopDaoImpl implements ShopDao {
+    private static final Logger logger = LogManager.getLogger(ShopDaoImpl.class);
     private final CarShop shop = CarShopStorage.getInstance().getCars();
     private final ShopService service = new ShopService();
+    private final ShopSortService sortService=new ShopSortService();
 
     @Override
     public void createCar(Car car) throws DaoException {
@@ -28,12 +32,15 @@ public class ShopDaoImpl implements ShopDao {
             }
         }
         cars.add(car);
-        shop.setCars(cars);
-        CarShopStorage.getInstance().setCars(shop);
+        saveCarsToWarehouse(cars);
+        logger.info("Add {} in CarShopStorage", car);
     }
 
     @Override
-    public Car readCarById(int id) {
+    public Car readCarById(int id) throws DaoException {
+        if (!isValid(id)){
+            throw new DaoException("No car with this id in store: " + id);
+        }
         Car car = shop.getCar(id);
         return car;
     }
@@ -44,24 +51,25 @@ public class ShopDaoImpl implements ShopDao {
         return cars;
     }
 
-    public void readCarsFromFile(String dir) {
-        DataReader reader = new DataReader();
-        CarShop shop = reader.readCar(CarShopStorage.getInstance().getCars(), PropertiesLoader.getProperty(dir));
-        CarShopStorage.getInstance().setCars(shop);
-    }
-
     @Override
-    public void updateCar(int id, Car newCar) {
+    public void updateCar(int id, Car newCar) throws DaoException {
+        if (!isValid(id)){
+            throw new DaoException("No car with this id in store: " + id);
+        }
         Car shopCar = shop.getCar(id);
         shopCar.setBrand(newCar.getBrand());
         shopCar.setColor(newCar.getColor());
         shopCar.setPrice(newCar.getPrice());
         shopCar.setYear(newCar.getYear());
         shopCar.setRegistrationNumber(newCar.getRegistrationNumber());
+        logger.info("successfully updated {} ", newCar);
     }
 
     @Override
-    public void deleteCar(int id) {
+    public void deleteCar(int id) throws DaoException {
+        if (!isValid(id)){
+            throw new DaoException("No car with this id in store: " + id);
+        }
         List<Car> cars = shop.getCars();
         for (Car car : cars) {
             if (car.getId() == id) {
@@ -69,8 +77,25 @@ public class ShopDaoImpl implements ShopDao {
                 break;
             }
         }
-        shop.setCars(cars);
-        CarShopStorage.getInstance().setCars(shop);
+        saveCarsToWarehouse(cars);
+        logger.info("car id={} successfully deleted", id);
+    }
+
+    private  void saveCarsToWarehouse( List<Car> cars){
+        for (int i=0;i<cars.size();i++) {
+            CarShopStorage.getInstance().addCar(cars.get(i));
+        }
+    }
+
+    private boolean isValid(int id){
+        List<Car> cars = shop.getCars();
+        boolean isValid=false;
+        for (Car carInArray : cars) {
+            if (id == carInArray.getId()) {
+                isValid=true;
+            }
+        }
+        return isValid;
     }
 
     @Override
@@ -88,6 +113,35 @@ public class ShopDaoImpl implements ShopDao {
     @Override
     public List<Car> findByAgeAndPrice(int price, int age) {
         List<Car> cars = service.findByAgeAndPrice(shop, price, age);
+        return cars;
+    }
+
+    @Override
+    public List<Car> sortByYear(List<Car> cars) {
+        sortService.sortByYear(cars);
+        logger.info("Cars successfully sorted by year");
+        return cars;
+
+    }
+
+    @Override
+    public List<Car> sortByPrice(List<Car> cars) {
+        sortService.sortByPrice(cars);
+        logger.info("Cars successfully sorted by price");
+        return cars;
+    }
+
+    @Override
+    public List<Car> sortByBrand(List<Car> cars) {
+        sortService.sortByBrand(cars);
+        logger.info("Cars successfully sorted by brand");
+        return cars;
+    }
+
+    @Override
+    public List<Car> sortByYearThenPrice(List<Car> cars) {
+        sortService.sortByYearThenPrice(cars);
+        logger.info("Cars successfully sorted by year and price");
         return cars;
     }
 }

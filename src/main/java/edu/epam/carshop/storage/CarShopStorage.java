@@ -1,10 +1,13 @@
 package edu.epam.carshop.storage;
 
+import edu.epam.carshop.entity.Car;
 import edu.epam.carshop.entity.CarShop;
+
+import java.util.List;
 
 public class CarShopStorage {
     private static CarShopStorage instance;
-    private CarShop cars = new CarShop();
+    private CarShop shop = new CarShop();
 
     private CarShopStorage() {
     }
@@ -17,10 +20,14 @@ public class CarShopStorage {
     }
 
     public CarShop getCars() {
-        return cars;
+        return shop;
     }
 
-    public void setCars(CarShop cars) {
-        this.cars = cars;
+    public void addCar(Car car) {
+        shop.addCar(car);
+    }
+
+    public void setCar(int id, Car car) {
+        shop.setCar(id,car);
     }
 }
