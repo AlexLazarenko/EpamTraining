@@ -27,6 +27,14 @@ public class CarShop {
         cars.set(index, car);
     }
 
+    public void remove(int index){
+        cars.remove(index);
+    }
+
+    public void remove(Car car) {
+        cars.remove(car);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

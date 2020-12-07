@@ -20,6 +20,9 @@ public class Car {
         this.registrationNumber = registrationNumber;
     }
 
+    public Car() {
+    }
+
     public int getId() {
         return id;
     }

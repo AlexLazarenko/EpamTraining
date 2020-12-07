@@ -42,4 +42,15 @@ public class ShopService {
         }
         return currentCars;
     }
+
+    public Car findById(CarShop cars, int id) {
+        Car car = new Car();
+        for (int i = 0; i < cars.size(); i++) {
+            if (id == (cars.getCar(i).getId())) {
+                car = cars.getCar(i);
+                break;
+            }
+        }
+        return car;
+    }
 }

@@ -3,8 +3,6 @@ package edu.epam.carshop.storage;
 import edu.epam.carshop.entity.Car;
 import edu.epam.carshop.entity.CarShop;
 
-import java.util.List;
-
 public class CarShopStorage {
     private static CarShopStorage instance;
     private CarShop shop = new CarShop();
@@ -27,7 +25,11 @@ public class CarShopStorage {
         shop.addCar(car);
     }
 
+    public void remove(Car car) {
+        shop.remove(car);
+    }
+
     public void setCar(int id, Car car) {
-        shop.setCar(id,car);
+        shop.setCar(id, car);
     }
 }

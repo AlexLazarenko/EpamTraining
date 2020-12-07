@@ -8,21 +8,20 @@ import edu.epam.carshop.exception.DaoException;
 import edu.epam.carshop.service.ShopService;
 import edu.epam.carshop.service.ShopSortService;
 import edu.epam.carshop.storage.CarShopStorage;
-
-
-import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.List;
 
 public class ShopDaoImpl implements ShopDao {
     private static final Logger logger = LogManager.getLogger(ShopDaoImpl.class);
     private final CarShop shop = CarShopStorage.getInstance().getCars();
     private final ShopService service = new ShopService();
-    private final ShopSortService sortService=new ShopSortService();
+    private final ShopSortService sortService = new ShopSortService();
+    private final List<Car> cars = shop.getCars();
 
     @Override
     public void createCar(Car car) throws DaoException {
-        List<Car> cars = shop.getCars();
         if (cars.contains(car)) {
             throw new DaoException("This car is already in store: " + car);
         }
@@ -31,17 +30,16 @@ public class ShopDaoImpl implements ShopDao {
                 throw new DaoException("Car with this id is already in store: " + car.getId());
             }
         }
-        cars.add(car);
-        saveCarsToWarehouse(cars);
+        shop.addCar(car);
         logger.info("Add {} in CarShopStorage", car);
     }
 
     @Override
     public Car readCarById(int id) throws DaoException {
-        if (!isValid(id)){
+        if (!isValid(id)) {
             throw new DaoException("No car with this id in store: " + id);
         }
-        Car car = shop.getCar(id);
+        Car car = service.findById(shop, id);
         return car;
     }
 
@@ -53,10 +51,10 @@ public class ShopDaoImpl implements ShopDao {
 
     @Override
     public void updateCar(int id, Car newCar) throws DaoException {
-        if (!isValid(id)){
+        if (!isValid(id)) {
             throw new DaoException("No car with this id in store: " + id);
         }
-        Car shopCar = shop.getCar(id);
+        Car shopCar = service.findById(shop, id);
         shopCar.setBrand(newCar.getBrand());
         shopCar.setColor(newCar.getColor());
         shopCar.setPrice(newCar.getPrice());
@@ -67,32 +65,18 @@ public class ShopDaoImpl implements ShopDao {
 
     @Override
     public void deleteCar(int id) throws DaoException {
-        if (!isValid(id)){
-            throw new DaoException("No car with this id in store: " + id);
-        }
-        List<Car> cars = shop.getCars();
-        for (Car car : cars) {
-            if (car.getId() == id) {
-                cars.remove(car);
-                break;
-            }
-        }
-        saveCarsToWarehouse(cars);
+        Car car=readCarById(id);
+        shop.remove(car);
         logger.info("car id={} successfully deleted", id);
     }
 
-    private  void saveCarsToWarehouse( List<Car> cars){
-        for (int i=0;i<cars.size();i++) {
-            CarShopStorage.getInstance().addCar(cars.get(i));
-        }
-    }
-
-    private boolean isValid(int id){
+    private boolean isValid(int id) {
         List<Car> cars = shop.getCars();
-        boolean isValid=false;
+        boolean isValid = false;
         for (Car carInArray : cars) {
             if (id == carInArray.getId()) {
-                isValid=true;
+                isValid = true;
+                break;
             }
         }
         return isValid;

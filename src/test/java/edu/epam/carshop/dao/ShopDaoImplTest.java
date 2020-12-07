@@ -28,7 +28,7 @@ public class ShopDaoImplTest {
     public void testCreateCar() throws DaoException {
         Car expected = new Car(17, Color.BLACK, Brand.BMW, 2015, Model.COUPE, 15000, "numb17");
         shopDao.createCar(expected);
-        Car actual = shopDao.readCarById(17);
+        Car actual = shopDao.readCarById(expected.getId());
         assertEquals(actual, expected);
     }
 
@@ -82,16 +82,18 @@ public class ShopDaoImplTest {
     public void testUpdateCar() throws DaoException {
         Car expected=new Car(16, Color.PINK, Brand.BMW, 2005, Model.COUPE, 10000, "numb16");
         shopDao.updateCar(16,expected);
-        Car actual=shopDao.readCarById(16);
+        Car actual=shopDao.readCarById(expected.getId());
         assertEquals(actual, expected);
     }
 
     @Test
     public void testDeleteCar() throws DaoException {
-        shopDao.deleteCar(16);
-        int expected = 15;
+        int expected = cars.size();
+        System.out.println(cars);
+        shopDao.deleteCar(15);
+        System.out.println(cars);
         int actual = cars.size();
-        assertEquals(actual, expected);
+        assertEquals(actual+1, expected);
     }
 
     @Test
@@ -126,6 +128,5 @@ public class ShopDaoImplTest {
     @AfterMethod
     public void tearDown() {
         cars = null;
-
     }
 }
