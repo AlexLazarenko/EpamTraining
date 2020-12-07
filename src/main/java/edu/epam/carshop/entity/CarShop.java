@@ -27,7 +27,7 @@ public class CarShop {
         cars.set(index, car);
     }
 
-    public void remove(int index){
+    public void remove(int index) {
         cars.remove(index);
     }
 

@@ -1,7 +1,7 @@
 package edu.epam.carshop.service;
 
 import edu.epam.carshop.entity.*;
-import edu.epam.carshop.reader.DataReader;
+import edu.epam.carshop.reader.ShopDataReader;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -17,8 +17,8 @@ public class ShopServiceTest {
 
     @BeforeClass
     public void setUp() {
-        DataReader dataReader = new DataReader();
-        dataReader.readCar(cars,"testFile.dir");
+        ShopDataReader shopDataReader = new ShopDataReader();
+        shopDataReader.readCar(cars, "testFile.dir");
     }
 
     @Test

@@ -4,12 +4,15 @@ import edu.epam.carshop.entity.*;
 import edu.epam.carshop.utility.PropertiesLoader;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-public class DataReader {
+public class ShopDataReader {
+    private static final Logger logger = LogManager.getLogger(ShopDataReader.class);
     private int id = 0;
     private int year = 0;
     private int price = 0;
@@ -28,7 +31,7 @@ public class DataReader {
                 cars.addCar(car);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+           logger.error(e);
         }
         return cars;
     }

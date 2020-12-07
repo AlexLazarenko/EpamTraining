@@ -8,7 +8,7 @@ public class PropertiesLoaderTest {
 
     @Test
     public void testGetProperty() {
-        String expected = "src/test/resources/file.csv";
+        String expected = "src/test/resources/file/file.csv";
         String actual = PropertiesLoader.getProperty("testFile.dir");
         assertEquals(actual, expected);
     }

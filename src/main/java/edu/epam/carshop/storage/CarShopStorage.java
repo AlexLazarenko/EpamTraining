@@ -28,8 +28,4 @@ public class CarShopStorage {
     public void remove(Car car) {
         shop.remove(car);
     }
-
-    public void setCar(int id, Car car) {
-        shop.setCar(id, car);
-    }
 }

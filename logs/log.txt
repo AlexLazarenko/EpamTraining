@@ -1,0 +1,73 @@
+[INFO ] 2020-12-07 21:55:03.394 [main] ShopService - All cars with price 8000 and age 2011 found
+[INFO ] 2020-12-07 21:55:03.408 [main] ShopService - All cars with brand BMW found
+[INFO ] 2020-12-07 21:55:03.410 [main] ShopService - All cars with model SEDAN and age 2006 found
+[INFO ] 2020-12-07 21:55:21.458 [main] ShopService - All cars with brand BMW found
+[INFO ] 2020-12-07 21:55:21.471 [main] ShopService - All cars with model SEDAN and age 2006 found
+[INFO ] 2020-12-07 21:55:21.475 [main] ShopService - All cars with price 8000 and age 2011 found
+[INFO ] 2020-12-07 21:55:21.478 [main] ShopService - Car Car{id=1, color=VIOLET, brand=VOLKSWAGEN, year=2000, model=SEDAN, price=2000, registrationNumber='numb1'} with id 1 found
+[INFO ] 2020-12-07 21:55:21.482 [main] ShopDaoImpl - Add Car{id=17, color=BLACK, brand=BMW, year=2015, model=COUPE, price=15000, registrationNumber='numb17'} in CarShopStorage
+[INFO ] 2020-12-07 21:55:21.484 [main] ShopService - Car Car{id=17, color=BLACK, brand=BMW, year=2015, model=COUPE, price=15000, registrationNumber='numb17'} with id 17 found
+[INFO ] 2020-12-07 21:55:21.485 [main] ShopService - Car Car{id=16, color=PINK, brand=BMW, year=2005, model=COUPE, price=10000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 21:55:21.485 [main] ShopDaoImpl - successfully updated Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} 
+[INFO ] 2020-12-07 21:55:21.486 [main] ShopService - Car Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 21:55:21.487 [main] ShopService - Car Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 21:55:21.488 [main] ShopDaoImpl - car id=16 successfully deleted
+[INFO ] 2020-12-07 22:01:23.812 [main] ShopSortService - Cars sorted by year
+[INFO ] 2020-12-07 22:01:23.817 [main] ShopDaoImpl - Cars successfully sorted by year
+[INFO ] 2020-12-07 22:06:40.314 [main] ShopSortService - Cars sorted by year
+[INFO ] 2020-12-07 22:06:40.321 [main] ShopDaoImpl - Cars successfully sorted by year
+[INFO ] 2020-12-07 22:07:14.447 [main] ShopSortService - Cars sorted by price
+[INFO ] 2020-12-07 22:07:14.453 [main] ShopDaoImpl - Cars successfully sorted by price
+[INFO ] 2020-12-07 22:08:45.536 [main] ShopSortService - Cars sorted by year and price
+[INFO ] 2020-12-07 22:08:45.541 [main] ShopDaoImpl - Cars successfully sorted by year and price
+[INFO ] 2020-12-07 22:09:23.327 [main] ShopService - All cars with brand BMW found
+[INFO ] 2020-12-07 22:09:23.338 [main] ShopService - All cars with model SEDAN and age 2006 found
+[INFO ] 2020-12-07 22:09:23.340 [main] ShopService - All cars with price 8000 and age 2011 found
+[INFO ] 2020-12-07 22:09:23.346 [main] ShopService - Car Car{id=1, color=VIOLET, brand=VOLKSWAGEN, year=2000, model=SEDAN, price=2000, registrationNumber='numb1'} with id 1 found
+[INFO ] 2020-12-07 22:09:23.349 [main] ShopDaoImpl - Add Car{id=17, color=BLACK, brand=BMW, year=2015, model=COUPE, price=15000, registrationNumber='numb17'} in CarShopStorage
+[INFO ] 2020-12-07 22:09:23.350 [main] ShopService - Car Car{id=17, color=BLACK, brand=BMW, year=2015, model=COUPE, price=15000, registrationNumber='numb17'} with id 17 found
+[INFO ] 2020-12-07 22:09:23.352 [main] ShopService - Car Car{id=16, color=PINK, brand=BMW, year=2005, model=COUPE, price=10000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 22:09:23.353 [main] ShopDaoImpl - successfully updated Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} 
+[INFO ] 2020-12-07 22:09:23.353 [main] ShopService - Car Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 22:09:23.356 [main] ShopService - Car Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 22:09:23.356 [main] ShopDaoImpl - car id=16 successfully deleted
+[INFO ] 2020-12-07 22:09:23.360 [main] ShopSortService - Cars sorted by year
+[INFO ] 2020-12-07 22:09:23.361 [main] ShopDaoImpl - Cars successfully sorted by year
+[INFO ] 2020-12-07 22:09:23.371 [main] ShopSortService - Cars sorted by price
+[INFO ] 2020-12-07 22:09:23.372 [main] ShopDaoImpl - Cars successfully sorted by price
+[INFO ] 2020-12-07 22:09:23.376 [main] ShopSortService - Cars sorted by year and price
+[INFO ] 2020-12-07 22:09:23.377 [main] ShopDaoImpl - Cars successfully sorted by year and price
+[INFO ] 2020-12-07 22:11:36.745 [main] ShopService - All cars with brand BMW found
+[INFO ] 2020-12-07 22:11:36.759 [main] ShopService - All cars with model SEDAN and age 2006 found
+[INFO ] 2020-12-07 22:11:36.762 [main] ShopService - All cars with price 8000 and age 2011 found
+[INFO ] 2020-12-07 22:11:36.767 [main] ShopService - Car Car{id=1, color=VIOLET, brand=VOLKSWAGEN, year=2000, model=SEDAN, price=2000, registrationNumber='numb1'} with id 1 found
+[INFO ] 2020-12-07 22:11:36.771 [main] ShopSortService - Cars sorted by year
+[INFO ] 2020-12-07 22:11:36.771 [main] ShopDaoImpl - Cars successfully sorted by year
+[INFO ] 2020-12-07 22:11:36.773 [main] ShopService - Car Car{id=16, color=PINK, brand=BMW, year=2005, model=COUPE, price=10000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 22:11:36.773 [main] ShopDaoImpl - successfully updated Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} 
+[INFO ] 2020-12-07 22:11:36.774 [main] ShopService - Car Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 22:11:36.777 [main] ShopService - Car Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 22:11:36.777 [main] ShopDaoImpl - car id=16 successfully deleted
+[INFO ] 2020-12-07 22:11:36.779 [main] ShopDaoImpl - Add Car{id=17, color=BLACK, brand=BMW, year=2015, model=COUPE, price=15000, registrationNumber='numb17'} in CarShopStorage
+[INFO ] 2020-12-07 22:11:36.780 [main] ShopService - Car Car{id=17, color=BLACK, brand=BMW, year=2015, model=COUPE, price=15000, registrationNumber='numb17'} with id 17 found
+[INFO ] 2020-12-07 22:11:36.782 [main] ShopSortService - Cars sorted by price
+[INFO ] 2020-12-07 22:11:36.783 [main] ShopDaoImpl - Cars successfully sorted by price
+[INFO ] 2020-12-07 22:11:36.786 [main] ShopSortService - Cars sorted by year and price
+[INFO ] 2020-12-07 22:11:36.786 [main] ShopDaoImpl - Cars successfully sorted by year and price
+[INFO ] 2020-12-07 22:20:45.137 [main] ShopService - All cars with brand BMW found
+[INFO ] 2020-12-07 22:20:45.152 [main] ShopService - All cars with model SEDAN and age 2006 found
+[INFO ] 2020-12-07 22:20:45.155 [main] ShopService - All cars with price 8000 and age 2011 found
+[INFO ] 2020-12-07 22:20:45.161 [main] ShopService - Car Car{id=1, color=VIOLET, brand=VOLKSWAGEN, year=2000, model=SEDAN, price=2000, registrationNumber='numb1'} with id 1 found
+[INFO ] 2020-12-07 22:20:45.165 [main] ShopSortService - Cars sorted by year
+[INFO ] 2020-12-07 22:20:45.166 [main] ShopDaoImpl - Cars successfully sorted by year
+[INFO ] 2020-12-07 22:20:45.168 [main] ShopService - Car Car{id=16, color=PINK, brand=BMW, year=2005, model=COUPE, price=10000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 22:20:45.168 [main] ShopDaoImpl - successfully updated Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} 
+[INFO ] 2020-12-07 22:20:45.169 [main] ShopService - Car Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 22:20:45.172 [main] ShopService - Car Car{id=16, color=BLUE, brand=BMW, year=2005, model=COUPE, price=12000, registrationNumber='numb16'} with id 16 found
+[INFO ] 2020-12-07 22:20:45.173 [main] ShopDaoImpl - car id=16 successfully deleted
+[INFO ] 2020-12-07 22:20:45.175 [main] ShopDaoImpl - Add Car{id=17, color=BLACK, brand=BMW, year=2015, model=COUPE, price=15000, registrationNumber='numb17'} in CarShopStorage
+[INFO ] 2020-12-07 22:20:45.176 [main] ShopService - Car Car{id=17, color=BLACK, brand=BMW, year=2015, model=COUPE, price=15000, registrationNumber='numb17'} with id 17 found
+[INFO ] 2020-12-07 22:20:45.178 [main] ShopSortService - Cars sorted by price
+[INFO ] 2020-12-07 22:20:45.179 [main] ShopDaoImpl - Cars successfully sorted by price
+[INFO ] 2020-12-07 22:20:45.181 [main] ShopSortService - Cars sorted by year and price
+[INFO ] 2020-12-07 22:20:45.181 [main] ShopDaoImpl - Cars successfully sorted by year and price

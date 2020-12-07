@@ -18,10 +18,10 @@ public class ShopDaoImpl implements ShopDao {
     private final CarShop shop = CarShopStorage.getInstance().getCars();
     private final ShopService service = new ShopService();
     private final ShopSortService sortService = new ShopSortService();
-    private final List<Car> cars = shop.getCars();
 
     @Override
     public void createCar(Car car) throws DaoException {
+        List<Car> cars = shop.getCars();
         if (cars.contains(car)) {
             throw new DaoException("This car is already in store: " + car);
         }

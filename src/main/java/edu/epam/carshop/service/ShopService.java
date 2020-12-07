@@ -4,12 +4,15 @@ import edu.epam.carshop.entity.Brand;
 import edu.epam.carshop.entity.Car;
 import edu.epam.carshop.entity.CarShop;
 import edu.epam.carshop.entity.Model;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class ShopService {
+    private static final Logger logger = LogManager.getLogger(ShopService.class);
 
     public List<Car> findByBrand(CarShop cars, Brand brand) {
         List<Car> currentCars = new ArrayList<>();
@@ -18,6 +21,7 @@ public class ShopService {
                 currentCars.add(cars.getCar(i));
             }
         }
+        logger.info("All cars with brand {} found", brand);
         return currentCars;
     }
 
@@ -29,6 +33,7 @@ public class ShopService {
                 currentCars.add(cars.getCar(i));
             }
         }
+        logger.info("All cars with model {} and age {} found", model, age);
         return currentCars;
     }
 
@@ -40,6 +45,7 @@ public class ShopService {
                 currentCars.add(cars.getCar(i));
             }
         }
+        logger.info("All cars with price {} and age {} found", price, age);
         return currentCars;
     }
 
@@ -51,6 +57,7 @@ public class ShopService {
                 break;
             }
         }
+        logger.info("Car {} with id {} found", car, id);
         return car;
     }
 }

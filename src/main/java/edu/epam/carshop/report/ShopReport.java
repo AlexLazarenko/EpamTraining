@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class ShopReport {
 
-    public void print(ArrayList<Car> currentCars){
-        if (currentCars.size() == 0){
+    public void print(ArrayList<Car> currentCars) {
+        if (currentCars.size() == 0) {
             System.out.println("Not found");
-        }else {
+        } else {
             System.out.println("List of cars:");
             System.out.println(currentCars);
         }

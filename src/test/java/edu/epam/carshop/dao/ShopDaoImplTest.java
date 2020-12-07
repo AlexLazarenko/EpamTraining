@@ -2,11 +2,10 @@ package edu.epam.carshop.dao;
 
 import edu.epam.carshop.entity.*;
 import edu.epam.carshop.exception.DaoException;
-import edu.epam.carshop.reader.DataReader;
-import edu.epam.carshop.service.ShopService;
+import edu.epam.carshop.reader.ShopDataReader;
 import edu.epam.carshop.storage.CarShopStorage;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -18,13 +17,13 @@ public class ShopDaoImplTest {
     private CarShop cars = CarShopStorage.getInstance().getCars();
     private ShopDaoImpl shopDao = new ShopDaoImpl();
 
-    @BeforeMethod
+    @BeforeSuite
     public void setUp() {
-        DataReader dataReader = new DataReader();
-        cars = dataReader.readCar(cars, "testFile.dir");
+        ShopDataReader shopDataReader = new ShopDataReader();
+        cars = shopDataReader.readCar(cars, "testFile.dir");
     }
 
-    @Test
+    @Test(priority = 8)
     public void testCreateCar() throws DaoException {
         Car expected = new Car(17, Color.BLACK, Brand.BMW, 2015, Model.COUPE, 15000, "numb17");
         shopDao.createCar(expected);
@@ -32,14 +31,29 @@ public class ShopDaoImplTest {
         assertEquals(actual, expected);
     }
 
-    @Test
+    @Test(expectedExceptions = DaoException.class)
+    public void testCreateCarException() throws DaoException {
+        Car expected = new Car(1, Color.VIOLET, Brand.VOLKSWAGEN, 2000, Model.SEDAN, 2000, "numb1");
+        shopDao.createCar(expected);
+        Car actual = shopDao.readCarById(expected.getId());
+        assertEquals(actual, expected);
+    }
+
+    @Test(priority = 4)
     public void testReadCarById() throws DaoException {
         Car expected = new Car(1, Color.VIOLET, Brand.VOLKSWAGEN, 2000, Model.SEDAN, 2000, "numb1");
         Car actual = shopDao.readCarById(expected.getId());
         assertEquals(actual, expected);
     }
 
-    @Test
+    @Test(expectedExceptions = DaoException.class)
+    public void testReadByIdException() throws DaoException {
+        Car expected = new Car(100, Color.VIOLET, Brand.VOLKSWAGEN, 2000, Model.SEDAN, 2000, "numb1");
+        Car actual = shopDao.readCarById(expected.getId());
+        assertEquals(actual, expected);
+    }
+
+    @Test(priority = 3)
     public void testReadCars() {
         List<Car> expected = new ArrayList<Car>();
         List<Car> actual = shopDao.readCars();
@@ -78,25 +92,23 @@ public class ShopDaoImplTest {
         assertEquals(actual, expected);
     }
 
-    @Test
+    @Test(priority = 6)
     public void testUpdateCar() throws DaoException {
-        Car expected=new Car(16, Color.PINK, Brand.BMW, 2005, Model.COUPE, 10000, "numb16");
-        shopDao.updateCar(16,expected);
-        Car actual=shopDao.readCarById(expected.getId());
+        Car expected = new Car(16, Color.BLUE, Brand.BMW, 2005, Model.COUPE, 12000, "numb16");
+        shopDao.updateCar(16, expected);
+        Car actual = shopDao.readCarById(expected.getId());
         assertEquals(actual, expected);
     }
 
-    @Test
+    @Test(priority = 7)
     public void testDeleteCar() throws DaoException {
         int expected = cars.size();
-        System.out.println(cars);
-        shopDao.deleteCar(15);
-        System.out.println(cars);
-        int actual = cars.size();
-        assertEquals(actual+1, expected);
+        shopDao.deleteCar(16);
+        int actual = cars.size() + 1;
+        assertEquals(actual, expected);
     }
 
-    @Test
+    @Test(priority = 0)
     public void testFindByBrand() {
         List<Car> actual = shopDao.findByBrand(Brand.BMW);
         List<Car> expected = new ArrayList<>();
@@ -107,7 +119,7 @@ public class ShopDaoImplTest {
         assertEquals(actual, expected);
     }
 
-    @Test
+    @Test(priority = 1)
     public void testFindByModelAndAge() {
         List<Car> actual = shopDao.findByModelAndAge(Model.SEDAN, 2006);
         List<Car> expected = new ArrayList<>();
@@ -116,7 +128,7 @@ public class ShopDaoImplTest {
         assertEquals(actual, expected);
     }
 
-    @Test
+    @Test(priority = 2)
     public void testFindByAgeAndPrice() {
         List<Car> actual = shopDao.findByAgeAndPrice(8000, 2011);
         List<Car> expected = new ArrayList<>();
@@ -125,8 +137,33 @@ public class ShopDaoImplTest {
         assertEquals(actual, expected);
     }
 
-    @AfterMethod
+    @Test(priority = 5)
+    public void testSortByYear() {
+        List<Car> list = shopDao.sortByYear(cars.getCars());
+        Car actual = (list.get(list.size() - 1));
+        Car expected = new Car(8, Color.GREY, Brand.BMW, 2015, Model.UNIVERSAL, 17000, "numb8");
+        assertEquals(actual, expected);
+    }
+
+    @Test(priority = 9)
+    public void testSortByPrice() {
+        List<Car> list = shopDao.sortByPrice(cars.getCars());
+        Car actual = (list.get(list.size() - 1));
+        Car expected = new Car(8, Color.GREY, Brand.BMW, 2015, Model.UNIVERSAL, 17000, "numb8");
+        assertEquals(actual, expected);
+    }
+
+    @Test(priority = 10)
+    public void testSortByYearThenPrice() {
+        List<Car> list = shopDao.sortByYearThenPrice(cars.getCars());
+        Car actual = (list.get(list.size() - 1));
+        Car expected = new Car(8, Color.GREY, Brand.BMW, 2015, Model.UNIVERSAL, 17000, "numb8");
+        assertEquals(actual, expected);
+    }
+
+    @AfterSuite
     public void tearDown() {
         cars = null;
     }
+
 }

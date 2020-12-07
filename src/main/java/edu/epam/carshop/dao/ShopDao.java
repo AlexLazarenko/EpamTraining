@@ -15,8 +15,6 @@ public interface ShopDao {
 
     List<Car> readCars();
 
-//    CarShop readCarsFromFile(String dir);
-
     void updateCar(int id, Car newCar) throws DaoException;
 
     void deleteCar(int id) throws DaoException;
